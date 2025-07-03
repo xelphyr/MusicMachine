@@ -9,6 +9,9 @@
 
 #include <iostream>
 
+#include "modules.hpp"
+#include "camera.hpp"
+
 SDL_Window* window = nullptr;
 SDL_Renderer* renderer = nullptr;
 SDL_Texture* texture = nullptr;
@@ -41,6 +44,11 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
     ImGui_ImplSDL3_InitForSDLRenderer(window, renderer);
     ImGui_ImplSDLRenderer3_Init(renderer);
 
+
+    Camera::Instance().position = {0,0};
+    Camera::Instance().zoom = 1; 
+
+
     return SDL_APP_CONTINUE; 
 }
 
@@ -63,6 +71,13 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     ImGui_ImplSDLRenderer3_NewFrame();
     ImGui_ImplSDL3_NewFrame();
     ImGui::NewFrame();
+
+    Camera::Instance().CheckChanges();
+
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_FRect box = {2.f+Camera::Instance().position.x, 2.f+Camera::Instance().position.y, Camera::Instance().zoom*20, Camera::Instance().zoom*20};
+
+    SDL_RenderFillRect(renderer, &box);
 
     // Example ImGui window
     ImGui::Begin("Hello, Music Machine!");

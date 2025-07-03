@@ -1,9 +1,10 @@
 #pragma once
+#include "blocks/internal/block.hpp"
 
 namespace MM::Blocks
 {
     /* Source-Type module that releases a single pulse */
-    class Pulser
+    class Pulser : public Block
     {
     public:
         
