@@ -1,15 +1,18 @@
 #pragma once
-#include "blocks/internal/block.hpp"
+
+#include "blocks/internal/logic/note.hpp"
+#include "blocks/internal/ui/block_ui.hpp"
+#include "blocks/internal/ports/pulse_in.hpp"
+#include "blocks/internal/ports/pulse_out.hpp"
 
 namespace MM::Blocks
 {
-    /* Emitter-Type module that plays a note when it receives a pulse*/
-    class Note : public Block
+    class Note
     {
-    public:
-        
-    private:
-
+    public: 
+        NoteLogic logic;
+        BlockUI ui{};
+        MM::BlockPort::PulseIn input{"Input", {-1.f, 0.f}};
+        MM::BlockPort::PulseOut output{"Output", {1.f, 0.f}};
     };
 }
-    

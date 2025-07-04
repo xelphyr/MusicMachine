@@ -23,7 +23,7 @@ public:
         if (ImGui::IsMouseDragging(ImGuiMouseButton_Right))
         {
             ImVec2 delta = ImGui::GetIO().MouseDelta;
-            position += ToSDL_FPoint(delta);
+            position -= ToSDL_FPoint(delta)/zoom;
         }
 
         float wheel = ImGui::GetIO().MouseWheel;
@@ -43,5 +43,4 @@ public:
 private:
     Camera() {}
     ~Camera() {}
-
 };

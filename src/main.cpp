@@ -75,7 +75,7 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     Camera::Instance().CheckChanges();
 
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_FRect box = {2.f+Camera::Instance().position.x, 2.f+Camera::Instance().position.y, Camera::Instance().zoom*20, Camera::Instance().zoom*20};
+    SDL_FRect box = {(2.f-Camera::Instance().position.x+320.f/Camera::Instance().zoom)*Camera::Instance().zoom, (2.f-Camera::Instance().position.y+240.f/Camera::Instance().zoom)*Camera::Instance().zoom, Camera::Instance().zoom*20, Camera::Instance().zoom*20};
 
     SDL_RenderFillRect(renderer, &box);
 

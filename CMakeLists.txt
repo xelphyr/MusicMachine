@@ -37,6 +37,18 @@ target_link_libraries(MusicMachine PRIVATE
     ${SDL3_LIBRARY}
 )
 
+# === SDL_Image ===
+set(SDL3_IMAGE_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/sdl_image/include")
+set(SDL3_IMAGE_LIBRARY "${CMAKE_CURRENT_SOURCE_DIR}/lib/sdl_image/lib/x64/SDL3_image.lib")
+
+target_include_directories(MusicMachine PRIVATE
+    ${SDL3_IMAGE_INCLUDE_DIR}
+)
+
+target_link_libraries(MusicMachine PRIVATE
+    ${SDL3_IMAGE_LIBRARY}
+)
+
 # === ImGui ===
 file(GLOB IMGUI_SRC
     lib/imgui/*.cpp
@@ -48,12 +60,14 @@ target_include_directories(imgui PUBLIC
     lib/imgui
     lib/imgui/backends
     ${SDL3_INCLUDE_DIR}
+    ${SDL3_IMAGE_INCLUDE_DIR}
 )
 
 # ===Link Dependencies===
 target_link_libraries(MusicMachine PRIVATE
     imgui
     ${SDL3_LIBRARY}
+    ${SDL3_IMAGE_LIBRARY}
     opengl32
     winmm
     gdi32
