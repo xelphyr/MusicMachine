@@ -82,8 +82,13 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     // Example ImGui window
     ImGui::Begin("Hello, Music Machine!");
     ImGui::Text("This is your GUI.");
-    ImGui::End();
+    
 
+    if (ImGui::Button("Add a source"))
+    {
+        
+    }
+    ImGui::End();
     ImGui::Render();
     ImGui_ImplSDLRenderer3_RenderDrawData(ImGui::GetDrawData(), renderer);
 

@@ -4,7 +4,7 @@
 namespace MM::Blocks
 {
     /* TEMPLATE, DO NOT USE IN CODE */
-    class XXLogic : public Block
+    class XXLogic
     {
     public:
         
