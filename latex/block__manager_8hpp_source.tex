@@ -1,0 +1,57 @@
+\doxysection{block\+\_\+manager.\+hpp}
+\hypertarget{block__manager_8hpp_source}{}\label{block__manager_8hpp_source}\index{include/systems/block\_manager.hpp@{include/systems/block\_manager.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stack>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}blocks/internal/block.hpp"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}blocks/internal/sprite/block\_sprite.hpp"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}systems/event\_bus.hpp"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}events/noteframe\_event.hpp"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }MM::Systems}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{class\ }BlockManager}
+\DoxyCodeLine{00015\ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ BlockManager\&\ Instance()}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ BlockManager\ nfm;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ nfm;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ BlockManager(\textcolor{keyword}{const}\ BlockManager\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ BlockManager\&\ operator\ =\ (\textcolor{keyword}{const}\ BlockManager\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ AddBlock(std::string\ \textcolor{keywordtype}{id},\ std::shared\_ptr<Block>\ block);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ RemoveBlock(std::string\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ std::weak\_ptr<Block>\ GetHoveredBlock(SDL\_FPoint\ mousePos);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ RunFrame(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_note_frame_event}{NoteFrameEvent}}\&\ event);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ ResetFrame();}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ ProcessFrame();}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ BlockManager()}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ EventBus::Instance().Subscribe<\mbox{\hyperlink{struct_note_frame_event}{NoteFrameEvent}}>}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ (}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{keyword}{this}](\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_note_frame_event}{NoteFrameEvent}}\&\ e)\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>RunFrame(e);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \string~BlockManager()\{\};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ std::unordered\_map<std::string,\ std::shared\_ptr<Block>>\ placedBlocks;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ std::unordered\_map<std::string,\ std::weak\_ptr<BlockSprite>>\ transforms;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ std::vector<std::weak\_ptr<Block>>\ sourceBlocks;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ std::unordered\_map<std::shared\_ptr<Block>,\ bool,\ \mbox{\hyperlink{struct_block_hash}{BlockHash}}>\ blockProcessed;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ std::stack<std::shared\_ptr<Block>>\ processStack;}
+\DoxyCodeLine{00049\ \ \ \ \ \};}
+\DoxyCodeLine{00050\ \}}
+\DoxyCodeLine{00051\ \ \ \ \ }
+
+\end{DoxyCode}

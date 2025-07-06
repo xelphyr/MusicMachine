@@ -1,0 +1,26 @@
+\doxysection{note.\+hpp}
+\hypertarget{note_8hpp_source}{}\label{note_8hpp_source}\index{include/blocks/emitters/note.hpp@{include/blocks/emitters/note.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}camera.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}systems/render\_context.hpp"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}blocks/internal/ports/pulse\_in.hpp"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}blocks/internal/ports/pulse\_out.hpp"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }MM::Blocks}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_m_m_1_1_blocks_1_1_note}{Note}}}
+\DoxyCodeLine{00012\ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{private}:\ }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_block_sprite}{BlockSprite}}\ ui\{Camera::Instance().position,\ \textcolor{stringliteral}{"{}../assets/blocks/Note.png"{}},\ MM::Systems::RenderContext::Instance().renderer\};}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_m_m_1_1_block_port_1_1_pulse_in}{MM::BlockPort::PulseIn}}\ input\{\textcolor{stringliteral}{"{}Input"{}},\ \{-\/1.f,\ 0.f\},\ this-\/>shared\_from\_this()\};}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_m_m_1_1_block_port_1_1_pulse_out}{MM::BlockPort::PulseOut}}\ output\{\textcolor{stringliteral}{"{}Output"{}},\ \{1.f,\ 0.f\}\};}
+\DoxyCodeLine{00019\ \ \ \ \ \};}
+\DoxyCodeLine{00020\ \}}
+
+\end{DoxyCode}

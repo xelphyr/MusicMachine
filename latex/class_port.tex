@@ -1,0 +1,61 @@
+\doxysection{Port Class Reference}
+\hypertarget{class_port}{}\label{class_port}\index{Port@{Port}}
+
+
+Inheritance diagram for Port\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_port__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_port_aa738f06103aa83ffaad92b94cff10be5}\label{class_port_aa738f06103aa83ffaad92b94cff10be5} 
+enum {\bfseries Port\+Type} \{ \newline
+{\bfseries Signal\+In}
+, {\bfseries Signal\+Out}
+, {\bfseries Pulse\+In}
+, {\bfseries Pulse\+Out}
+, \newline
+{\bfseries Scalar\+In}
+, {\bfseries Scalar\+Out}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_port_a9647b182ca252c9c05bfec93875d300c}\label{class_port_a9647b182ca252c9c05bfec93875d300c} 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_block}{Block}} $>$ {\bfseries Get\+Parent} () const
+\item 
+\Hypertarget{class_port_aa2aa7ad7444ab81a77617611680ceb88}\label{class_port_aa2aa7ad7444ab81a77617611680ceb88} 
+SDL\+\_\+\+FPoint {\bfseries Get\+Offset} () const
+\item 
+\Hypertarget{class_port_aed3a889392c8d12668c269a2929950db}\label{class_port_aed3a889392c8d12668c269a2929950db} 
+SDL\+\_\+\+FPoint {\bfseries Get\+Position} () const
+\item 
+\Hypertarget{class_port_a7eab4c720419a14d38c87d6947c73c56}\label{class_port_a7eab4c720419a14d38c87d6947c73c56} 
+std\+::string {\bfseries Get\+Tag} () const
+\item 
+\Hypertarget{class_port_a38d0ffe802f772dbc0bc5d2f8e9e72fd}\label{class_port_a38d0ffe802f772dbc0bc5d2f8e9e72fd} 
+virtual Port\+Type {\bfseries Get\+Type} () const =0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_port_afb9a79b04d1c8269452052e8cf13178d}\label{class_port_afb9a79b04d1c8269452052e8cf13178d} 
+SDL\+\_\+\+FPoint {\bfseries offset}
+\item 
+\Hypertarget{class_port_a1e601d3a0dd8769bf8e3ffc937ce0e10}\label{class_port_a1e601d3a0dd8769bf8e3ffc937ce0e10} 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_block}{Block}} $>$ {\bfseries parent}
+\item 
+\Hypertarget{class_port_ae6a7e981081f93ce700fc5b6102b3f80}\label{class_port_ae6a7e981081f93ce700fc5b6102b3f80} 
+std\+::string {\bfseries tag}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/blocks/internal/ports/port.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,45 @@
+\doxysection{sdl\+\_\+ops.\+hpp}
+\hypertarget{sdl__ops_8hpp_source}{}\label{sdl__ops_8hpp_source}\index{include/helpers/sdl\_ops.hpp@{include/helpers/sdl\_ops.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <SDL3/SDL.h>}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{namespace\ }MM::Helpers}
+\DoxyCodeLine{00005\ \{}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keyword}{inline}\ SDL\_FPoint\ operator+=(SDL\_FPoint\&\ lhs,\ SDL\_FPoint\ rhs)}
+\DoxyCodeLine{00007\ \ \ \ \ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ lhs.x\ +=\ rhs.x;}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ lhs.y\ +=\ rhs.y;}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lhs;}
+\DoxyCodeLine{00011\ \ \ \ \ \}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{inline}\ SDL\_FPoint\ operator-\/=(SDL\_FPoint\&\ lhs,\ SDL\_FPoint\ rhs)}
+\DoxyCodeLine{00014\ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ lhs.x\ -\/=\ rhs.x;}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ lhs.y\ -\/=\ rhs.y;}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lhs;}
+\DoxyCodeLine{00018\ \ \ \ \ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{inline}\ SDL\_FPoint\ operator+(SDL\_FPoint\ lhs,\ SDL\_FPoint\ rhs)}
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ SDL\_FPoint(\{lhs.x\ +\ rhs.x,\ lhs.y\ +\ rhs.y\});}
+\DoxyCodeLine{00023\ \ \ \ \ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{inline}\ SDL\_FPoint\ operator-\/(SDL\_FPoint\ lhs,\ SDL\_FPoint\ rhs)}
+\DoxyCodeLine{00026\ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ SDL\_FPoint(\{lhs.x\ -\/\ rhs.x,\ lhs.y\ -\/\ rhs.y\});}
+\DoxyCodeLine{00028\ \ \ \ \ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{inline}\ SDL\_FPoint\ operator/(SDL\_FPoint\ lhs,\ \textcolor{keywordtype}{float}\ rhs)}
+\DoxyCodeLine{00031\ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ SDL\_FPoint(\{lhs.x\ /\ rhs,\ lhs.y\ /\ rhs\});}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{inline}\ SDL\_FPoint\ operator*(SDL\_FPoint\ lhs,\ \textcolor{keywordtype}{float}\ rhs)}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ SDL\_FPoint(\{lhs.x\ *\ rhs,\ lhs.y\ *\ rhs\});}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \}}
+
+\end{DoxyCode}

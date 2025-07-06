@@ -1,0 +1,41 @@
+\doxysection{pulse\+\_\+in.\+hpp}
+\hypertarget{pulse__in_8hpp_source}{}\label{pulse__in_8hpp_source}\index{include/blocks/internal/ports/pulse\_in.hpp@{include/blocks/internal/ports/pulse\_in.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}blocks/internal/ports/port\_in.hpp"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}blocks/internal/ports/pulse\_out.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <SDL3/SDL.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }MM::BlockPort}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{class\ }PulseIn\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_port_in}{PortIn}}}
+\DoxyCodeLine{00011\ \ \ \ \ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ *Offset*\ is\ the\ position\ relative\ to\ the\ center\ of\ the\ model\ when\ the\ model\ is\ facing\ left-\/to-\/right,\ range\ of\ -\/1\ to\ +1\ on\ both\ axes}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ \ \ \ Tag\ is\ the\ ID\ of\ the\ input,\ aka\ what\ input\ the\ block\ expects\ at\ that\ port*/}}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ PulseIn(std::string\ tag,\ SDL\_FPoint\ offset,\ std::weak\_ptr<Block>\ parent)\ \{this-\/>tag\ =\ tag;\ this-\/>offset\ =\ offset;\ this-\/>parent\ =\ parent;\}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \string~PulseIn()\{\}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Receive(\textcolor{keywordtype}{bool}\ impulse)\ \{state\ =\ impulse;\}}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isReady()\textcolor{keyword}{\ override\ }\{\textcolor{keywordflow}{return}\ state>=0;\}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Reset()\textcolor{keyword}{\ override\ }\{state\ =\ -\/1;\}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ SetPort(std::weak\_ptr<MM::BlockPort::PulseOut>\ newOut)\ \{out\ =\ newOut;\}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ RemovePort()\ \{out\ =\ std::weak\_ptr<MM::BlockPort::PulseOut>();\}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ std::weak\_ptr<MM::BlockPort::PulseOut>\ GetPort()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ out;\}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ GetState()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ state;\}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ PortType\ GetType()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00028\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Port::PulseIn;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ std::weak\_ptr<MM::BlockPort::PulseOut>\ out;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ state\ =\ -\/1;}
+\DoxyCodeLine{00034\ \ \ \ \ \};}
+\DoxyCodeLine{00035\ \}}
+
+\end{DoxyCode}

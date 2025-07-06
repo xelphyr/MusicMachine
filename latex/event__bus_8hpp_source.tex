@@ -1,0 +1,54 @@
+\doxysection{event\+\_\+bus.\+hpp}
+\hypertarget{event__bus_8hpp_source}{}\label{event__bus_8hpp_source}\index{include/systems/event\_bus.hpp@{include/systems/event\_bus.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }EventBus}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ EventBus\&\ Instance()}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ EventBus\ nfm;}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ nfm;}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ EventBus(\textcolor{keyword}{const}\ EventBus\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ EventBus\&\ operator\ =\ (\textcolor{keyword}{const}\ EventBus\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ EventType>}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Subscribe(std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ EventType\&)>\ listener);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ EventType>}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Emit(\textcolor{keyword}{const}\ EventType\&\ event);}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ EventBus()\{\};}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \string~EventBus()\{\};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ std::unordered\_map<\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*,\ std::vector<std::function<void(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*)>>>\ listeners;}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ EventType>}
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{void}\ EventBus::Subscribe(std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ EventType\&)>\ listener)}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ listeners[\textcolor{keyword}{typeid}(EventType).name()].push\_back(}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ [listener](\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ event)\{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ listener(*\textcolor{keyword}{static\_cast<}\textcolor{keyword}{const\ }EventType*\textcolor{keyword}{>}(event));}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ );}
+\DoxyCodeLine{00037\ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ EventType>}
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{void}\ EventBus::Emit(\textcolor{keyword}{const}\ EventType\&\ event)}
+\DoxyCodeLine{00041\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ typeName\ =\ \textcolor{keyword}{typeid}(EventType).name();}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ func\ :\ listeners[typeName])}
+\DoxyCodeLine{00044\ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ func(\&event);}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \}}
+\DoxyCodeLine{00048\ }
+
+\end{DoxyCode}

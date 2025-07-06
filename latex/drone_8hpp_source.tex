@@ -1,0 +1,30 @@
+\doxysection{drone.\+hpp}
+\hypertarget{drone_8hpp_source}{}\label{drone_8hpp_source}\index{include/blocks/emitters/drone.hpp@{include/blocks/emitters/drone.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}blocks/internal/block.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}blocks/internal/ports/pulse\_in.hpp"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}blocks/internal/ports/signal\_out.hpp"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }MM::Blocks}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{class\ }Drone\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_block}{Block}}}
+\DoxyCodeLine{00010\ \ \ \ \ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ Drone();}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \string~Drone()\{\};}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Update()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Reset()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ std::vector<std::weak\_ptr<Block>>\ Propagate()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ IsReady()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ std::shared\_ptr<MM::BlockPort::PulseIn>\ input;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ std::shared\_ptr<MM::BlockPort::SignalOut>\ output;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ state\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \};}
+\DoxyCodeLine{00024\ \}}
+
+\end{DoxyCode}

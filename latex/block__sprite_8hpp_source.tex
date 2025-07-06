@@ -1,0 +1,43 @@
+\doxysection{block\+\_\+sprite.\+hpp}
+\hypertarget{block__sprite_8hpp_source}{}\label{block__sprite_8hpp_source}\index{include/blocks/internal/sprite/block\_sprite.hpp@{include/blocks/internal/sprite/block\_sprite.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <SDL3/SDL.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <SDL3\_image/SDL\_image.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }BlockSprite}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \ \ BlockSprite(SDL\_FPoint\ position,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ pathToTexture,\ SDL\_Renderer*\ renderer)\ }
+\DoxyCodeLine{00010\ \ \ \ \ :\ position(position)}
+\DoxyCodeLine{00011\ \ \ \ \ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ SDL\_Surface*\ surface\ =\ IMG\_Load(pathToTexture);}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!surface)\ }
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Log(\textcolor{stringliteral}{"{}Failed\ to\ load\ image:\ \%s"{}},\ SDL\_GetError());}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ SDL\_Texture*\ texture\ =\ SDL\_CreateTextureFromSurface(renderer,\ surface);}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ SDL\_DestroySurface(surface);}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ overlay\ =\ texture;}
+\DoxyCodeLine{00021\ \ \ \ \ \};}
+\DoxyCodeLine{00022\ \ \ \ \ \string~BlockSprite()\ \{\};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ SDL\_FPoint\ \textcolor{keyword}{const}\ GetPosition()\ \{\textcolor{keywordflow}{return}\ position;\}}
+\DoxyCodeLine{00025\ \ \ \ \ SDL\_FPoint\ \textcolor{keyword}{const}\ GetScale()\ \{\textcolor{keywordflow}{return}\ scale;\}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ \textcolor{keyword}{const}\ GetPower()\ \{\textcolor{keywordflow}{return}\ powerStrength;\}}
+\DoxyCodeLine{00027\ \ \ \ \ SDL\_Texture*\ \textcolor{keyword}{const}\ GetOverlay()\ \{\textcolor{keywordflow}{return}\ overlay;\}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ SetPosition(SDL\_FPoint\ newPos)\ \{position\ =\ newPos;\}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ SetPower(\textcolor{keywordtype}{float}\ newPower)\ \{powerStrength\ =\ newPower;\}\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ SetOverlay(SDL\_Texture*\ newOverlay)\ \{overlay\ =\ newOverlay;\}}
+\DoxyCodeLine{00032\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00033\ \ \ \ \ SDL\_FPoint\ position;}
+\DoxyCodeLine{00034\ \ \ \ \ SDL\_FPoint\ scale;}
+\DoxyCodeLine{00035\ \ \ \ \ SDL\_Texture*\ overlay;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{float}\ powerStrength;}
+\DoxyCodeLine{00037\ \};}
+
+\end{DoxyCode}

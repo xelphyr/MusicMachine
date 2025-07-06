@@ -1,0 +1,50 @@
+\doxysection{port.\+hpp}
+\hypertarget{port_8hpp_source}{}\label{port_8hpp_source}\index{include/blocks/internal/ports/port.hpp@{include/blocks/internal/ports/port.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <SDL3/SDL.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}blocks/internal/block.hpp"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_port}{Port}}}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{enum}\ PortType}
+\DoxyCodeLine{00011\ \ \ \ \ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ SignalIn,}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ SignalOut,}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ PulseIn,}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ PulseOut,}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ ScalarIn,}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ ScalarOut}
+\DoxyCodeLine{00018\ \ \ \ \ \};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_port}{\string~Port}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00021\ \ \ \ \ std::weak\_ptr<Block>\ GetParent()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ parent;\}}
+\DoxyCodeLine{00022\ \ \ \ \ SDL\_FPoint\ GetOffset()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ offset;\}}
+\DoxyCodeLine{00023\ \ \ \ \ SDL\_FPoint\ GetPosition()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ sp\ =\ parent.lock())}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ std::weak\_ptr<BlockSprite>\ sprite\ =\ sp-\/>GetSprite();}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ s\ =\ sprite.lock())}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_FPoint\ pos\ =\ s-\/>GetPosition();}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Adjust\ position\ based\ on\ the\ offset}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{pos.x\ +\ offset.x,\ pos.y\ +\ offset.y\};}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{0.f,\ 0.f\};\ \textcolor{comment}{//\ Default\ position\ if\ parent\ is\ not\ available}}
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ std::string\ GetTag()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ tag;\}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{virtual}\ PortType\ GetType()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00041\ \ \ \ \ SDL\_FPoint\ offset;}
+\DoxyCodeLine{00042\ \ \ \ \ std::weak\_ptr<Block>\ parent;}
+\DoxyCodeLine{00043\ \ \ \ \ std::string\ tag;}
+\DoxyCodeLine{00044\ \};}
+
+\end{DoxyCode}

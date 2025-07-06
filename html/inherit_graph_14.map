@@ -1,0 +1,19 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$class_port.html" title=" " alt="" coords="5,145,51,172"/>
+<area shape="rect" id="Node000001" href="$class_port_in.html" title=" " alt="" coords="104,95,160,121"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="64,139,102,119,104,124,66,143"/>
+<area shape="rect" id="Node000005" href="$class_port_out.html" title=" " alt="" coords="99,171,165,197"/>
+<area shape="poly" id="edge5_Node000000_Node000005" title=" " alt="" coords="67,165,99,173,98,179,65,170"/>
+<area shape="rect" id="Node000002" href="$class_m_m_1_1_block_port_1_1_pulse_in.html" title=" " alt="" coords="220,5,380,32"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="156,82,182,61,212,42,239,30,241,35,214,46,185,65,160,86"/>
+<area shape="rect" id="Node000003" href="$class_m_m_1_1_block_port_1_1_scalar_in.html" title=" " alt="" coords="218,56,382,83"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="175,96,239,81,240,86,176,101"/>
+<area shape="rect" id="Node000004" href="$class_m_m_1_1_block_port_1_1_signal_in.html" title=" " alt="" coords="218,107,382,133"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="176,108,218,111,218,117,175,114"/>
+<area shape="rect" id="Node000006" href="$class_m_m_1_1_block_port_1_1_pulse_out.html" title=" " alt="" coords="215,157,385,184"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="181,178,214,175,215,180,181,183"/>
+<area shape="rect" id="Node000007" href="$class_m_m_1_1_block_port_1_1_scalar_out.html" title=" " alt="" coords="213,208,387,235"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="181,192,237,205,236,210,180,197"/>
+<area shape="rect" id="Node000008" href="$class_m_m_1_1_block_port_1_1_signal_out.html" title=" " alt="" coords="214,259,387,285"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="160,206,185,226,214,244,241,256,239,260,212,249,182,231,157,210"/>
+</map>

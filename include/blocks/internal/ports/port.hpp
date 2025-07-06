@@ -7,12 +7,38 @@
 class Port
 {
 public:
+    enum PortType
+    {
+        SignalIn,
+        SignalOut,
+        PulseIn,
+        PulseOut,
+        ScalarIn,
+        ScalarOut
+    };
+
     virtual ~Port() = default;
-    std::weak_ptr<Block> GetParent();
+    std::weak_ptr<Block> GetParent() const {return parent;}
+    SDL_FPoint GetOffset() const {return offset;}
+    SDL_FPoint GetPosition() const
+    {
+        if (auto sp = parent.lock())
+        {
+            std::weak_ptr<BlockSprite> sprite = sp->GetSprite();
+            if (auto s = sprite.lock())
+            {
+                SDL_FPoint pos = s->GetPosition();
+                // Adjust position based on the offset
+                return {pos.x + offset.x, pos.y + offset.y};
+            }
+        }
+        return {0.f, 0.f}; // Default position if parent is not available
+    }
+    std::string GetTag() const {return tag;}
+    virtual PortType GetType() const = 0;
 
 protected:
     SDL_FPoint offset;
     std::weak_ptr<Block> parent;
     std::string tag;
-    float val;
 };

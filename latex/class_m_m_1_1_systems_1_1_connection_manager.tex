@@ -1,0 +1,35 @@
+\doxysection{MM\+::Systems\+::Connection\+Manager Class Reference}
+\hypertarget{class_m_m_1_1_systems_1_1_connection_manager}{}\label{class_m_m_1_1_systems_1_1_connection_manager}\index{MM::Systems::ConnectionManager@{MM::Systems::ConnectionManager}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_m_m_1_1_systems_1_1_connection_manager_a0c9222275f9ef59338b0950e62191a40}\label{class_m_m_1_1_systems_1_1_connection_manager_a0c9222275f9ef59338b0950e62191a40} 
+{\bfseries Connection\+Manager} (const \mbox{\hyperlink{class_m_m_1_1_systems_1_1_connection_manager}{Connection\+Manager}} \&)=delete
+\item 
+\Hypertarget{class_m_m_1_1_systems_1_1_connection_manager_a03e5ac18f7418b1885129e38e13e77ad}\label{class_m_m_1_1_systems_1_1_connection_manager_a03e5ac18f7418b1885129e38e13e77ad} 
+\mbox{\hyperlink{class_m_m_1_1_systems_1_1_connection_manager}{Connection\+Manager}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_m_m_1_1_systems_1_1_connection_manager}{Connection\+Manager}} \&)=delete
+\item 
+\Hypertarget{class_m_m_1_1_systems_1_1_connection_manager_a3da473f9c63ee49c5a28e54ee7400ce0}\label{class_m_m_1_1_systems_1_1_connection_manager_a3da473f9c63ee49c5a28e54ee7400ce0} 
+void {\bfseries Render\+Connections} ()
+\item 
+\Hypertarget{class_m_m_1_1_systems_1_1_connection_manager_a31bf0c014fbf13701dabfa97491820e5}\label{class_m_m_1_1_systems_1_1_connection_manager_a31bf0c014fbf13701dabfa97491820e5} 
+void {\bfseries Add\+Connection} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_port_out}{Port\+Out}} $>$ out\+Port, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_port_in}{Port\+In}} $>$ in\+Port)
+\item 
+\Hypertarget{class_m_m_1_1_systems_1_1_connection_manager_a0e861baef5b0cc2a2a5dc344252c769c}\label{class_m_m_1_1_systems_1_1_connection_manager_a0e861baef5b0cc2a2a5dc344252c769c} 
+void {\bfseries Remove\+Connection} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_port}{Port}} $>$ out\+Port, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_port}{Port}} $>$ in\+Port)
+\item 
+\Hypertarget{class_m_m_1_1_systems_1_1_connection_manager_a9b6be512f96622ec73175d3bc336499d}\label{class_m_m_1_1_systems_1_1_connection_manager_a9b6be512f96622ec73175d3bc336499d} 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_port}{Port}} $>$ {\bfseries Get\+Connected\+In\+Port} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_port}{Port}} $>$ out\+Port) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_m_m_1_1_systems_1_1_connection_manager_af419a6ddf87a28cde6eae3d016fa2946}\label{class_m_m_1_1_systems_1_1_connection_manager_af419a6ddf87a28cde6eae3d016fa2946} 
+static \mbox{\hyperlink{class_m_m_1_1_systems_1_1_connection_manager}{Connection\+Manager}} \& {\bfseries Instance} ()
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/systems/connection\+\_\+manager.\+hpp\item 
+src/systems/connection\+\_\+manager.\+cpp\end{DoxyCompactItemize}

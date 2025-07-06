@@ -1,0 +1,40 @@
+\doxysection{sprite\+\_\+manager.\+hpp}
+\hypertarget{sprite__manager_8hpp_source}{}\label{sprite__manager_8hpp_source}\index{include/systems/sprite\_manager.hpp@{include/systems/sprite\_manager.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}systems/block\_manager.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}systems/render\_context.hpp"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}blocks/internal/ports/port.hpp"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}helpers/screen\_world\_convert.hpp"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <SDL3/SDL.h>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }MM::Systems}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{class\ }SpriteManager}
+\DoxyCodeLine{00012\ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ SpriteManager\&\ Instance()}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ SpriteManager\ sm;}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sm;}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ SpriteManager(\textcolor{keyword}{const}\ SpriteManager\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ SpriteManager\&\ operator\ =\ (\textcolor{keyword}{const}\ SpriteManager\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Update();}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Render();}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ std::weak\_ptr<BlockSprite>\ GetHoveredSprite(SDL\_FPoint\ mousePos);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ std::weak\_ptr<Port>\ GetHoveredPort(SDL\_FPoint\ mousePos);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ SpriteManager()\ \{\};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \string~SpriteManager()\ \{\};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ std::unordered\_map<std::string,\ std::weak\_ptr<BlockSprite>>\ sprites;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ std::unordered\_map<std::string,\ std::weak\_ptr<Port>>\ ports;}
+\DoxyCodeLine{00033\ \ \ \ \ \};}
+\DoxyCodeLine{00034\ \}}
+
+\end{DoxyCode}

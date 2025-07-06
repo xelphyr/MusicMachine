@@ -1,0 +1,41 @@
+\doxysection{MM\+::Systems\+::Block\+Manager Class Reference}
+\hypertarget{class_m_m_1_1_systems_1_1_block_manager}{}\label{class_m_m_1_1_systems_1_1_block_manager}\index{MM::Systems::BlockManager@{MM::Systems::BlockManager}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_m_m_1_1_systems_1_1_block_manager_a2db69178f163c451a6a0349fef014ec3}\label{class_m_m_1_1_systems_1_1_block_manager_a2db69178f163c451a6a0349fef014ec3} 
+{\bfseries Block\+Manager} (const \mbox{\hyperlink{class_m_m_1_1_systems_1_1_block_manager}{Block\+Manager}} \&)=delete
+\item 
+\Hypertarget{class_m_m_1_1_systems_1_1_block_manager_a2793d4672032a6eb0f39fce27a63c426}\label{class_m_m_1_1_systems_1_1_block_manager_a2793d4672032a6eb0f39fce27a63c426} 
+\mbox{\hyperlink{class_m_m_1_1_systems_1_1_block_manager}{Block\+Manager}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_m_m_1_1_systems_1_1_block_manager}{Block\+Manager}} \&)=delete
+\item 
+\Hypertarget{class_m_m_1_1_systems_1_1_block_manager_aec9de2b4eba78034da834237138babb9}\label{class_m_m_1_1_systems_1_1_block_manager_aec9de2b4eba78034da834237138babb9} 
+void {\bfseries Add\+Block} (std\+::string id, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_block}{Block}} $>$ block)
+\item 
+\Hypertarget{class_m_m_1_1_systems_1_1_block_manager_acf9cb15ca5eca6d331fc4b3055845646}\label{class_m_m_1_1_systems_1_1_block_manager_acf9cb15ca5eca6d331fc4b3055845646} 
+void {\bfseries Remove\+Block} (std\+::string id)
+\item 
+\Hypertarget{class_m_m_1_1_systems_1_1_block_manager_aaf464a5d822750527c074bfc7c82c14a}\label{class_m_m_1_1_systems_1_1_block_manager_aaf464a5d822750527c074bfc7c82c14a} 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_block}{Block}} $>$ {\bfseries Get\+Hovered\+Block} (SDL\+\_\+\+FPoint mouse\+Pos)
+\item 
+\Hypertarget{class_m_m_1_1_systems_1_1_block_manager_aec11155a88fba41243c875ec08d914bd}\label{class_m_m_1_1_systems_1_1_block_manager_aec11155a88fba41243c875ec08d914bd} 
+void {\bfseries Run\+Frame} (const \mbox{\hyperlink{struct_note_frame_event}{Note\+Frame\+Event}} \&event)
+\item 
+\Hypertarget{class_m_m_1_1_systems_1_1_block_manager_a95e256974da2ef6ba425ef7fab1f5003}\label{class_m_m_1_1_systems_1_1_block_manager_a95e256974da2ef6ba425ef7fab1f5003} 
+void {\bfseries Reset\+Frame} ()
+\item 
+\Hypertarget{class_m_m_1_1_systems_1_1_block_manager_a8135ba7a125f76ae3256e2813e40e8be}\label{class_m_m_1_1_systems_1_1_block_manager_a8135ba7a125f76ae3256e2813e40e8be} 
+void {\bfseries Process\+Frame} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_m_m_1_1_systems_1_1_block_manager_a147a85a40e9888c6acde13bc345e2650}\label{class_m_m_1_1_systems_1_1_block_manager_a147a85a40e9888c6acde13bc345e2650} 
+static \mbox{\hyperlink{class_m_m_1_1_systems_1_1_block_manager}{Block\+Manager}} \& {\bfseries Instance} ()
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/systems/block\+\_\+manager.\+hpp\item 
+src/systems/block\+\_\+manager.\+cpp\end{DoxyCompactItemize}

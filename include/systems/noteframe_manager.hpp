@@ -19,6 +19,7 @@ namespace MM::Systems
         NoteframeManager& operator = (const NoteframeManager&) = delete;
 
         void Update();
+        unsigned int GetCurrentFrame() const { return currFrame; }
     private:
         NoteframeManager();
         ~NoteframeManager() {};

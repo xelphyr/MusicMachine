@@ -1,10 +1,12 @@
 #pragma once
 #include <SDL3/SDL.h>
 #include <functional>
+#include <memory>
 #include <string>
-#include "blocks/internal/ui/block_ui.hpp"
+#include "systems/tex_manager.hpp"
+#include "blocks/internal/sprite/block_sprite.hpp"
 
-class Block
+class Block : public std::enable_shared_from_this<Block>
 {
 public:
     virtual ~Block(){};
@@ -15,9 +17,10 @@ public:
 
     std::string GetName() const {return m_name;}
     int GetID() const {return m_id;}
+    std::weak_ptr<BlockSprite> GetSprite() {return m_sprite;}  
 
 protected:
-    BlockUI m_ui;
+    std::shared_ptr<BlockSprite> m_sprite;
     std::string m_name;
     unsigned int m_id;
     bool m_available{true};

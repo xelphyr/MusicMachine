@@ -5,16 +5,27 @@ using SP = std::shared_ptr<T>;
 template <typename T>
 using WP = std::weak_ptr<T>;
 
-void MM::Systems::BlockManager::RunFrame(const NoteFrameEvent& event)
+void MM::Systems::BlockManager::AddBlock(std::string id, std::shared_ptr<Block> block)
+{
+    placedBlocks[id] = block;
+    transforms[id] = block->GetSprite();
+}
+
+void MM::Systems::BlockManager::RemoveBlock(std::string id)
+{
+    placedBlocks.erase(id);
+    transforms.erase(id);
+}
+
+void MM::Systems::BlockManager::RunFrame(const NoteFrameEvent &event)
 {
     ResetFrame();
     ProcessFrame();
 }
 
-
 void MM::Systems::BlockManager::ResetFrame() 
 {
-    for (auto& block : placedBlocks)
+    for (auto& [name, block] : placedBlocks)
     {
         block->Reset();
     }

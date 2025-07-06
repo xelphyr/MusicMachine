@@ -1,0 +1,40 @@
+\doxysection{screen\+\_\+world\+\_\+convert.\+hpp}
+\hypertarget{screen__world__convert_8hpp_source}{}\label{screen__world__convert_8hpp_source}\index{include/helpers/screen\_world\_convert.hpp@{include/helpers/screen\_world\_convert.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}camera.hpp"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{namespace\ }MM::Helpers}
+\DoxyCodeLine{00005\ \{}
+\DoxyCodeLine{00006\ \ \ \ \ SDL\_FPoint\ ScreenToWorld(SDL\_FPoint\ screenPoint)}
+\DoxyCodeLine{00007\ \ \ \ \ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ Camera\&\ camera\ =\ Camera::Instance();}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ SDL\_FPoint\ worldPoint;}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dx\ =\ (screenPoint.x\ -\/\ camera.dimensions.x\ /\ 2.f)\ /\ camera.zoom;}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dy\ =\ (screenPoint.y\ -\/\ camera.dimensions.y\ /\ 2.f)\ /\ camera.zoom;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ worldPoint.x\ =\ camera.position.x\ +\ dx;}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ worldPoint.y\ =\ camera.position.y\ -\/\ dy;\ \ \textcolor{comment}{//\ flip\ Y}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ worldPoint;}
+\DoxyCodeLine{00018\ \ \ \ \ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ SDL\_FPoint\ WorldToScreen(SDL\_FPoint\ worldPoint)}
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ Camera\&\ camera\ =\ Camera::Instance();}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ SDL\_FPoint\ screenPoint;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dx\ =\ (worldPoint.x\ -\/\ camera.position.x)\ *\ camera.zoom;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dy\ =\ (camera.position.y\ -\/\ worldPoint.y)\ *\ camera.zoom;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ screenPoint.x\ =\ dx\ +\ camera.dimensions.x\ /\ 2.f;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ screenPoint.y\ =\ dy\ +\ camera.dimensions.y\ /\ 2.f;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ screenPoint;}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \}}
+
+\end{DoxyCode}

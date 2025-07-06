@@ -1,0 +1,112 @@
+\doxysection{MM\+::Block\+Port\+::Scalar\+Out Class Reference}
+\hypertarget{class_m_m_1_1_block_port_1_1_scalar_out}{}\label{class_m_m_1_1_block_port_1_1_scalar_out}\index{MM::BlockPort::ScalarOut@{MM::BlockPort::ScalarOut}}
+
+
+Inheritance diagram for MM\+::Block\+Port\+::Scalar\+Out\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{class_m_m_1_1_block_port_1_1_scalar_out__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for MM\+::Block\+Port\+::Scalar\+Out\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{class_m_m_1_1_block_port_1_1_scalar_out__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_m_m_1_1_block_port_1_1_scalar_out_a728aa3053947b737ee116636ca18f16d}\label{class_m_m_1_1_block_port_1_1_scalar_out_a728aa3053947b737ee116636ca18f16d} 
+{\bfseries Scalar\+Out} (std\+::string tag, SDL\+\_\+\+FPoint offset, std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_block}{Block}} $>$ parent)
+\item 
+\Hypertarget{class_m_m_1_1_block_port_1_1_scalar_out_a786a33318e3d363f40635798fb05d1cf}\label{class_m_m_1_1_block_port_1_1_scalar_out_a786a33318e3d363f40635798fb05d1cf} 
+void {\bfseries Set\+State} (float value)
+\item 
+\Hypertarget{class_m_m_1_1_block_port_1_1_scalar_out_aa0e5723b1b262a951a6e65e2274da5a4}\label{class_m_m_1_1_block_port_1_1_scalar_out_aa0e5723b1b262a951a6e65e2274da5a4} 
+void {\bfseries Send} ()
+\item 
+void \mbox{\hyperlink{class_m_m_1_1_block_port_1_1_scalar_out_ac75261b03f5bf6b08630c8c6a1915678}{Reset}} () override
+\item 
+\Hypertarget{class_m_m_1_1_block_port_1_1_scalar_out_a4af352aabd7966e6c714747ab87f12ec}\label{class_m_m_1_1_block_port_1_1_scalar_out_a4af352aabd7966e6c714747ab87f12ec} 
+void {\bfseries Set\+Port} (std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_m_m_1_1_block_port_1_1_scalar_in}{MM\+::\+Block\+Port\+::\+Scalar\+In}} $>$ new\+In)
+\item 
+\Hypertarget{class_m_m_1_1_block_port_1_1_scalar_out_aabac843df4e1b7c2e04903b6124563c5}\label{class_m_m_1_1_block_port_1_1_scalar_out_aabac843df4e1b7c2e04903b6124563c5} 
+void {\bfseries Remove\+Port} ()
+\item 
+\Hypertarget{class_m_m_1_1_block_port_1_1_scalar_out_afac5dc78db52e427baf0845b32f0b391}\label{class_m_m_1_1_block_port_1_1_scalar_out_afac5dc78db52e427baf0845b32f0b391} 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_m_m_1_1_block_port_1_1_scalar_in}{MM\+::\+Block\+Port\+::\+Scalar\+In}} $>$ {\bfseries Get\+Port} () const
+\item 
+Port\+Type \mbox{\hyperlink{class_m_m_1_1_block_port_1_1_scalar_out_a592078b21725050f390fd56ef32a3947}{Get\+Type}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_port}{Port}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_block}{Block}} $>$ {\bfseries Get\+Parent} () const
+\item 
+SDL\+\_\+\+FPoint {\bfseries Get\+Offset} () const
+\item 
+SDL\+\_\+\+FPoint {\bfseries Get\+Position} () const
+\item 
+std\+::string {\bfseries Get\+Tag} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_port}{Port}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_port_aa738f06103aa83ffaad92b94cff10be5}\label{class_port_aa738f06103aa83ffaad92b94cff10be5} 
+enum {\bfseries Port\+Type} \{ \newline
+{\bfseries Signal\+In}
+, {\bfseries Signal\+Out}
+, {\bfseries Pulse\+In}
+, {\bfseries Pulse\+Out}
+, \newline
+{\bfseries Scalar\+In}
+, {\bfseries Scalar\+Out}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_port}{Port}}}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+FPoint {\bfseries offset}
+\item 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_block}{Block}} $>$ {\bfseries parent}
+\item 
+std\+::string {\bfseries tag}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_m_m_1_1_block_port_1_1_scalar_out_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_m_m_1_1_block_port_1_1_scalar_out_a592078b21725050f390fd56ef32a3947}\index{MM::BlockPort::ScalarOut@{MM::BlockPort::ScalarOut}!GetType@{GetType}}
+\index{GetType@{GetType}!MM::BlockPort::ScalarOut@{MM::BlockPort::ScalarOut}}
+\doxysubsubsection{\texorpdfstring{GetType()}{GetType()}}
+{\footnotesize\ttfamily \label{class_m_m_1_1_block_port_1_1_scalar_out_a592078b21725050f390fd56ef32a3947} 
+Port\+Type MM\+::\+Block\+Port\+::\+Scalar\+Out\+::\+Get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_port}{Port}}.
+
+\Hypertarget{class_m_m_1_1_block_port_1_1_scalar_out_ac75261b03f5bf6b08630c8c6a1915678}\index{MM::BlockPort::ScalarOut@{MM::BlockPort::ScalarOut}!Reset@{Reset}}
+\index{Reset@{Reset}!MM::BlockPort::ScalarOut@{MM::BlockPort::ScalarOut}}
+\doxysubsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily \label{class_m_m_1_1_block_port_1_1_scalar_out_ac75261b03f5bf6b08630c8c6a1915678} 
+void MM\+::\+Block\+Port\+::\+Scalar\+Out\+::\+Reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_port_out}{Port\+Out}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/blocks/internal/ports/scalar\+\_\+out.\+hpp\end{DoxyCompactItemize}

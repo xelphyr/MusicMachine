@@ -1,0 +1,28 @@
+\doxysection{Event\+Bus Class Reference}
+\hypertarget{class_event_bus}{}\label{class_event_bus}\index{EventBus@{EventBus}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_event_bus_a270ac5b93ed8fa8c64a32f89c281e7fa}\label{class_event_bus_a270ac5b93ed8fa8c64a32f89c281e7fa} 
+{\bfseries Event\+Bus} (const \mbox{\hyperlink{class_event_bus}{Event\+Bus}} \&)=delete
+\item 
+\Hypertarget{class_event_bus_a77679fdfb272555934f408c0a685c850}\label{class_event_bus_a77679fdfb272555934f408c0a685c850} 
+\mbox{\hyperlink{class_event_bus}{Event\+Bus}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_event_bus}{Event\+Bus}} \&)=delete
+\item 
+\Hypertarget{class_event_bus_aee7583f8671dae815bd22c2416a828a9}\label{class_event_bus_aee7583f8671dae815bd22c2416a828a9} 
+{\footnotesize template$<$typename Event\+Type$>$ }\\void {\bfseries Subscribe} (std\+::function$<$ void(const Event\+Type \&)$>$ listener)
+\item 
+\Hypertarget{class_event_bus_ab817e217ca5b08b6f7d6278fcda44820}\label{class_event_bus_ab817e217ca5b08b6f7d6278fcda44820} 
+{\footnotesize template$<$typename Event\+Type$>$ }\\void {\bfseries Emit} (const Event\+Type \&event)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_event_bus_abd9feeb8ae87c52bafd5c4fd56930998}\label{class_event_bus_abd9feeb8ae87c52bafd5c4fd56930998} 
+static \mbox{\hyperlink{class_event_bus}{Event\+Bus}} \& {\bfseries Instance} ()
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/systems/event\+\_\+bus.\+hpp\end{DoxyCompactItemize}

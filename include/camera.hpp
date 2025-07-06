@@ -38,6 +38,7 @@ public:
     Camera& operator = (const Camera&) = delete;
 
     SDL_FPoint position;
+    SDL_FPoint dimensions;
     float zoom;
 
 private:
