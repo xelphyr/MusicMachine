@@ -5,16 +5,37 @@ using SP = std::shared_ptr<T>;
 template <typename T>
 using WP = std::weak_ptr<T>;
 
-void MM::Systems::BlockManager::AddBlock(std::string id, std::shared_ptr<Block> block)
+void MM::Systems::BlockManager::AddBlock(const AddBlockEvent& event)
 {
-    placedBlocks[id] = block;
-    transforms[id] = block->GetSprite();
+    placedBlocks[event.block->GetID()] = event.block;
+    event.block->Init();
+    if (event.block->GetType() == Block::Type::Source)
+    {
+        sourceBlocks.push_back(event.block);
+    }
 }
 
-void MM::Systems::BlockManager::RemoveBlock(std::string id)
+void MM::Systems::BlockManager::RemoveBlock(const RemoveBlockEvent& event)
 {
-    placedBlocks.erase(id);
-    transforms.erase(id);
+    if (placedBlocks.find(event.id) == placedBlocks.end())
+    {
+        return; // Block not found
+    }
+    if (placedBlocks[event.id]->GetType() == Block::Type::Source)
+    {
+        for (auto it = sourceBlocks.begin(); it != sourceBlocks.end();)
+        {
+            if (it->lock()->GetID() == event.id)
+            {
+                it = sourceBlocks.erase(it);
+            }
+            else
+            {
+                ++it;
+            }
+        }
+    }
+    placedBlocks.erase(event.id);
 }
 
 void MM::Systems::BlockManager::RunFrame(const NoteFrameEvent &event)
@@ -55,7 +76,10 @@ void MM::Systems::BlockManager::ProcessFrame()
             std::vector<WP<Block>> newBlocks = currentBlock->Propagate();
             for (const auto& block : newBlocks)
             {
-                processStack.push(block.lock());
+                if (auto sp = block.lock())
+                {
+                    processStack.push(sp);
+                }
             }
             blockProcessed[currentBlock] = true;
         }

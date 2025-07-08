@@ -8,13 +8,13 @@
 
 namespace MM::Blocks
 {
-    class Note
+    class Note : public Block
     {
     public:
         
     private: 
-        BlockSprite ui{Camera::Instance().position, "../assets/blocks/Note.png", MM::Systems::RenderContext::Instance().renderer};
+
         MM::BlockPort::PulseIn input{"Input", {-1.f, 0.f}, this->shared_from_this()};
-        MM::BlockPort::PulseOut output{"Output", {1.f, 0.f}};
+        MM::BlockPort::PulseOut output{"Output", {1.f, 0.f}, this->shared_from_this()};
     };
 }

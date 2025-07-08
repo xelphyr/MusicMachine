@@ -28,17 +28,20 @@ public:
             if (auto s = sprite.lock())
             {
                 SDL_FPoint pos = s->GetPosition();
+                SDL_FPoint scale = s->GetScale();
                 // Adjust position based on the offset
-                return {pos.x + offset.x, pos.y + offset.y};
+                return {pos.x + (scale.x/2) * offset.x, pos.y + (scale.x/2) * offset.y};
             }
         }
         return {0.f, 0.f}; // Default position if parent is not available
     }
     std::string GetTag() const {return tag;}
+    std::string GetID() const {return id;}
     virtual PortType GetType() const = 0;
 
 protected:
     SDL_FPoint offset;
     std::weak_ptr<Block> parent;
     std::string tag;
+    std::string id;
 };

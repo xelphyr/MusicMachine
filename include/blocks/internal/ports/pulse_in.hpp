@@ -1,9 +1,11 @@
 #pragma once
 #include "blocks/internal/ports/port_in.hpp"
-#include "blocks/internal/ports/pulse_out.hpp"
+#include "helpers/gen_uuid.hpp"
 #include <memory>
 #include <SDL3/SDL.h>
 #include <string>
+
+namespace MM::BlockPort {class PulseOut; }
 
 namespace MM::BlockPort
 {
@@ -12,7 +14,7 @@ namespace MM::BlockPort
     public:
         /* *Offset* is the position relative to the center of the model when the model is facing left-to-right, range of -1 to +1 on both axes
         Tag is the ID of the input, aka what input the block expects at that port*/
-        PulseIn(std::string tag, SDL_FPoint offset, std::weak_ptr<Block> parent) {this->tag = tag; this->offset = offset; this->parent = parent;}
+        PulseIn(std::string tag, SDL_FPoint offset, std::weak_ptr<Block> parent) {this->tag = tag; this->offset = offset; this->parent = parent; this->id = MM::Helpers::generate_uuid();}
         ~PulseIn(){}
 
         void Receive(bool impulse) {state = impulse;}

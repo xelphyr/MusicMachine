@@ -21,45 +21,53 @@ void MM::UI::PortLink::Update()
     if (ImGui::IsMouseClicked(ImGuiMouseButton_Left))
     {
         SDL_FPoint mousePos = { io.MousePos.x, io.MousePos.y };
+        mousePos = MM::Helpers::ScreenToWorld(mousePos);
         if (auto port = MM::Systems::SpriteManager::Instance().GetHoveredPort(mousePos).lock())
         {
-            auto portOut = selectedPortOut.lock();
-            if (port->GetType() == Port::SignalOut || port->GetType() == Port::PulseOut || port->GetType() == Port::ScalarOut)
+            if (auto portOut = selectedPortOut.lock())
             {
-                // If the port is already selected, deselect it
-                if (selectedPortOut.lock() == port)
+                if (port->GetType() == Port::SignalOut || port->GetType() == Port::PulseOut || port->GetType() == Port::ScalarOut)
                 {
-                    selectedPortOut = std::weak_ptr<Port>();
+                    // If the port is already selected, deselect it
+                    if (selectedPortOut.lock() == port)
+                    {
+                        selectedPortOut = std::weak_ptr<Port>();
+                    }
+                    else
+                    {
+                        // Select the new port
+                        selectedPortOut = port;
+                    }
+                }
+                //TODO: Move to ConnectionManager
+                else if (port->GetType() == Port::SignalIn && portOut->GetType() == Port::SignalOut)
+                {
+                    std::dynamic_pointer_cast<MM::BlockPort::SignalIn>(port)->SetPort(std::dynamic_pointer_cast<MM::BlockPort::SignalOut>(portOut));
+                    std::dynamic_pointer_cast<MM::BlockPort::SignalOut>(portOut)->SetPort(std::dynamic_pointer_cast<MM::BlockPort::SignalIn>(port));
+                    MM::Systems::ConnectionManager::Instance().AddConnection(std::dynamic_pointer_cast<PortOut>(portOut), std::dynamic_pointer_cast<PortIn>(port));
+                }
+                else if (port->GetType() == Port::ScalarIn && portOut->GetType() == Port::ScalarOut)
+                {
+                    std::dynamic_pointer_cast<MM::BlockPort::ScalarIn>(port)->SetPort(std::dynamic_pointer_cast<MM::BlockPort::ScalarOut>(portOut));
+                    std::dynamic_pointer_cast<MM::BlockPort::ScalarOut>(portOut)->SetPort(std::dynamic_pointer_cast<MM::BlockPort::ScalarIn>(port));
+                    MM::Systems::ConnectionManager::Instance().AddConnection(std::dynamic_pointer_cast<PortOut>(portOut), std::dynamic_pointer_cast<PortIn>(port));
+                }
+                else if (port->GetType() == Port::PulseIn && portOut->GetType() == Port::PulseOut)
+                {
+                    std::dynamic_pointer_cast<MM::BlockPort::PulseIn>(port)->SetPort(std::dynamic_pointer_cast<MM::BlockPort::PulseOut>(portOut));
+                    std::dynamic_pointer_cast<MM::BlockPort::PulseOut>(portOut)->SetPort(std::dynamic_pointer_cast<MM::BlockPort::PulseIn>(port));
+                    MM::Systems::ConnectionManager::Instance().AddConnection(std::dynamic_pointer_cast<PortOut>(portOut), std::dynamic_pointer_cast<PortIn>(port));
                 }
                 else
                 {
-                    // Select the new port
-                    selectedPortOut = port;
+                    // If the port is not compatible, do nothing or show an error
+                    ImGui::Text("Incompatible port types.");
                 }
-            }
-            //TODO: Move to ConnectionManager
-            else if (port->GetType() == Port::SignalIn && portOut->GetType() == Port::SignalOut)
-            {
-                std::dynamic_pointer_cast<MM::BlockPort::SignalIn>(port)->SetPort(std::dynamic_pointer_cast<MM::BlockPort::SignalOut>(portOut));
-                std::dynamic_pointer_cast<MM::BlockPort::SignalOut>(portOut)->SetPort(std::dynamic_pointer_cast<MM::BlockPort::SignalIn>(port));
-                MM::Systems::ConnectionManager::Instance().AddConnection(std::dynamic_pointer_cast<PortOut>(portOut), std::dynamic_pointer_cast<PortIn>(port));
-            }
-            else if (port->GetType() == Port::ScalarIn && portOut->GetType() == Port::ScalarOut)
-            {
-                std::dynamic_pointer_cast<MM::BlockPort::ScalarIn>(port)->SetPort(std::dynamic_pointer_cast<MM::BlockPort::ScalarOut>(portOut));
-                std::dynamic_pointer_cast<MM::BlockPort::ScalarOut>(portOut)->SetPort(std::dynamic_pointer_cast<MM::BlockPort::ScalarIn>(port));
-                MM::Systems::ConnectionManager::Instance().AddConnection(std::dynamic_pointer_cast<PortOut>(portOut), std::dynamic_pointer_cast<PortIn>(port));
-            }
-            else if (port->GetType() == Port::PulseIn && portOut->GetType() == Port::PulseOut)
-            {
-                std::dynamic_pointer_cast<MM::BlockPort::PulseIn>(port)->SetPort(std::dynamic_pointer_cast<MM::BlockPort::PulseOut>(portOut));
-                std::dynamic_pointer_cast<MM::BlockPort::PulseOut>(portOut)->SetPort(std::dynamic_pointer_cast<MM::BlockPort::PulseIn>(port));
-                MM::Systems::ConnectionManager::Instance().AddConnection(std::dynamic_pointer_cast<PortOut>(portOut), std::dynamic_pointer_cast<PortIn>(port));
             }
             else
             {
-                // If the port is not compatible, do nothing or show an error
-                ImGui::Text("Incompatible port types.");
+                // If no port is selected, select the clicked port
+                selectedPortOut = port;
             }
         }
         else if (auto block = MM::Systems::SpriteManager::Instance().GetHoveredSprite(mousePos).lock())

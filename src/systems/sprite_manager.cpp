@@ -1,10 +1,10 @@
-#include "sprite_manager.hpp"
+#include "systems/sprite_manager.hpp"
 
 #define portSize 2
 
 void MM::Systems::SpriteManager::Update()
 {
-
+    
 }
 
 void MM::Systems::SpriteManager::Render()
@@ -35,8 +35,9 @@ void MM::Systems::SpriteManager::Render()
     {
         if (auto p = port.lock())
         {
-            // Render the port using SDL or your rendering library
-            // Example: SDL_RenderDrawPoint(renderer, p->GetOffset().x, p->GetOffset().y);
+            SDL_RenderPoint(RenderContext::Instance().renderer, 
+                MM::Helpers::WorldToScreen(p->GetPosition()).x, 
+                MM::Helpers::WorldToScreen(p->GetPosition()).y);
         }
     }
 }
@@ -57,6 +58,7 @@ std::weak_ptr<BlockSprite> MM::Systems::SpriteManager::GetHoveredSprite(SDL_FPoi
                 mousePos.y >= pos.y-scale.y/2.f && mousePos.y <= pos.y + scale.y/2.f)
             {
                 return sprite;
+                std::cout << "Hovered sprite at position: " << pos.x << ", " << pos.y << std::endl;
             }
         }
     }

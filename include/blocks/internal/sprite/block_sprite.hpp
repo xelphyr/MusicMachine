@@ -1,4 +1,5 @@
 #pragma once
+#include "systems/tex_manager.hpp"
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 #include <string>
@@ -6,18 +7,10 @@
 class BlockSprite
 {
 public:
-    BlockSprite(SDL_FPoint position, const char* pathToTexture, SDL_Renderer* renderer) 
-    : position(position)
+    BlockSprite(SDL_FPoint position, SDL_FPoint scale, std::string spriteName) 
+    : position(position), scale(scale), powerStrength(0.0f), overlay(nullptr)
     {
-        SDL_Surface* surface = IMG_Load(pathToTexture);
-        if (!surface) 
-        {
-            SDL_Log("Failed to load image: %s", SDL_GetError());
-        }
-
-        SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
-        SDL_DestroySurface(surface);
-        overlay = texture;
+        overlay = MM::Systems::TexManager::Instance().GetTexture(spriteName);
     };
     ~BlockSprite() {};
 

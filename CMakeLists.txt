@@ -11,9 +11,34 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows" AND CMAKE_CXX_COMPILER_ID STREQUAL "GNU
 
 endif()
 
+add_compile_definitions(SDL_MAIN_USE_CALLBACKS=1)
+
 # === Project Source Files ===
 set(SRC_FILES
+
     src/main.cpp
+
+    src/systems/ui_manager.cpp
+    src/systems/noteframe_manager.cpp
+    src/systems/block_manager.cpp
+    src/systems/connection_manager.cpp
+    src/systems/sprite_manager.cpp
+
+    src/ui/add_element.cpp
+    src/ui/port_link.cpp
+
+    src/blocks/drone.cpp
+    src/blocks/pulse_source.cpp
+
+    src/blocks/ports/pulse_out.cpp
+    src/blocks/ports/signal_out.cpp
+    src/blocks/ports/scalar_out.cpp
+
+    src/helpers/gen_uuid.cpp
+    src/helpers/vec_convert.cpp
+    src/helpers/screen_world_convert.cpp
+
+
 )
 
 # === Executable Target ===
@@ -28,6 +53,7 @@ target_include_directories(MusicMachine PRIVATE
 set(SDL3_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/sdl/include")
 
 set(SDL3_LIBRARY "${CMAKE_CURRENT_SOURCE_DIR}/lib/sdl/lib/x64/SDL3.lib")
+
 
 target_include_directories(MusicMachine PRIVATE
     ${SDL3_INCLUDE_DIR}
@@ -82,4 +108,16 @@ add_custom_command(TARGET MusicMachine POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
         "${CMAKE_SOURCE_DIR}/lib/sdl/lib/x64/SDL3.dll"
         $<TARGET_FILE_DIR:MusicMachine>
+)
+
+add_custom_command(TARGET MusicMachine POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${CMAKE_SOURCE_DIR}/lib/sdl_image/lib/x64/SDL3_image.dll"
+        $<TARGET_FILE_DIR:MusicMachine>
+)
+
+add_custom_command(TARGET MusicMachine POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${CMAKE_SOURCE_DIR}/assets"
+        "$<TARGET_FILE_DIR:MusicMachine>/assets"
 )

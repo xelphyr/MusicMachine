@@ -1,4 +1,5 @@
 #include "systems/connection_manager.hpp"
+#include "helpers/screen_world_convert.hpp"
 
 void MM::Systems::ConnectionManager::RenderConnections()
 {
@@ -9,8 +10,8 @@ void MM::Systems::ConnectionManager::RenderConnections()
         {
             if (auto inPort = connection.second.lock())
             {
-                SDL_FPoint outPos = outPort->GetPosition();
-                SDL_FPoint inPos = inPort->GetPosition();
+                SDL_FPoint outPos = MM::Helpers::WorldToScreen(outPort->GetPosition());
+                SDL_FPoint inPos = MM::Helpers::WorldToScreen(inPort->GetPosition());
 
                 // Render a line from outPort to inPort
                 SDL_RenderLine(RenderContext::Instance().renderer, 

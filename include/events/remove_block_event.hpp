@@ -3,5 +3,5 @@
 
 struct RemoveBlockEvent
 {
-    std::string block;
+    std::string id;
 };
